@@ -1,0 +1,5 @@
+*.secret
+*.ignore
+var/
+*.log
+*.log.*
