@@ -17,10 +17,12 @@ def is_on_substitutions_page(driver: WebDriver):
     return has_substitutions_title(driver)
 
 
-def click_all_do_not_substitute_boxes(driver: WebDriver):
+def check_all_do_not_substitute_boxes(driver: WebDriver):
     print("checking all do-not-substitute boxes")
     for box in get_do_not_substitute_boxes(driver):
-        box.click()
+        input_em = box.find_element_by_tag_name("input")
+        if not input_em.get_property("checked"):
+            box.click()
 
 
 def get_continue_button_maybe(driver: WebDriver):
@@ -34,6 +36,6 @@ def get_continue_button_maybe(driver: WebDriver):
 async def click_continue(driver: WebDriver):
     if not is_on_substitutions_page(driver):
         raise RuntimeError("not on the substitutions page")
-    click_all_do_not_substitute_boxes(driver)
+    check_all_do_not_substitute_boxes(driver)
     print("clicking through the substitutions page")
     get_continue_button_maybe(driver).click()
