@@ -1,5 +1,6 @@
 {
   "engineers": [ "+18001234567" ],
   "users": [ "+1800123456" ],
-  "app": "+18001234567"
+  "app": "+18001234567",
+  "comment": "change app to your Twilio number and change the other numbers to your own people and delete this line and rename this file from .example to .secret"
 }

@@ -6,11 +6,12 @@ from typing import Optional, Tuple
 
 from selenium.webdriver.remote.webdriver import WebDriver
 
+from mb.amazonslots.lib.path import get_repo_root
 from mb.amazonslots.lib.urls import BASE_URL
 
-COOKIES_PATH = "cookies.pkl.secret"
-USERNAME_PATH = "username.secret"
-PASSWORD_PATH = "password.secret"
+COOKIES_PATH = os.path.join(get_repo_root(), "python", "cookies.pkl.secret")
+USERNAME_PATH = os.path.join(get_repo_root(), "python", "username.secret")
+PASSWORD_PATH = os.path.join(get_repo_root(), "python", "password.secret")
 
 
 def is_signed_in(driver: WebDriver):

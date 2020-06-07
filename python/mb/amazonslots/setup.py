@@ -59,6 +59,6 @@ async def wait_for_cart_items(driver: WebDriver, service: FoodService):
     while not cart.get_cart_state(driver).is_cart_ready(service):
         # this means a live, editable order is already in the cart, or that
         # the cart is empty. either way, just spin here until it changes.
-        print("waiting for cart to fill up or become unmodifiable")
+        print("waiting for %s cart to fill up or become unmodifiable" % service)
         await go_or_throw(driver, CART_PAGE)
         await asyncio.sleep(30)

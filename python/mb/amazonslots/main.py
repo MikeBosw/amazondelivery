@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import asyncio
 
+from absl import flags, app
 from selenium import webdriver
 
 from mb.amazonslots import pages
@@ -10,15 +11,29 @@ from mb.amazonslots.navigation import try_to_go
 from mb.amazonslots.pages.slots import get_open_slots
 from mb.amazonslots.setup import go_to_slots_page
 
+flags.DEFINE_enum(
+    "service",
+    FoodService.WHOLE_FOODS.name,
+    [s.name for s in FoodService],
+    "Which food service to poll.",
+)
+
+FLAGS = flags.FLAGS
+
 SLOT_OPEN_MSG_FMT = (
     "{slots} slots for delivery are open! The time is now! "
     "Come and get a slot! This is it, folks! Oh boy. Oh wow."
 )
 
 
-async def main():
+def main(argv):
+    del argv  # unused
+    asyncio.get_event_loop().run_until_complete(_main(FoodService.WHOLE_FOODS))
+
+
+async def _main(service: FoodService):
+    print("running slot hunter on %s" % service.name)
     driver = webdriver.Chrome()
-    service = FoodService.WHOLE_FOODS
 
     if not await try_to_go(driver, pages.GUEST_PAGE):
         raise RuntimeError("failed to reach guest page")
@@ -52,4 +67,4 @@ async def monitor_slots_forever(driver, service: FoodService):
 
 
 if __name__ == "__main__":
-    asyncio.get_event_loop().run_until_complete(main())
+    app.run(main)

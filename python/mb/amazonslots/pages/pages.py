@@ -1,5 +1,6 @@
 from typing import Callable
 
+from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from mb.amazonslots.lib.wfaf import FoodService
@@ -20,8 +21,15 @@ class Page(object):
         is_signed_in: bool = True,
     ):
         self.name = name
-        self.is_on_page = is_on_page
+        self._is_on_page = is_on_page
         self.is_signed_in = is_signed_in
+
+    def is_on_page(self, driver):
+        try:
+            return self._is_on_page(driver)
+        except StaleElementReferenceException:
+            # due to a race condition of some kind. try again
+            return self._is_on_page(driver)
 
     def __repr__(self) -> str:
         return "<Page: %s>" % self.name
