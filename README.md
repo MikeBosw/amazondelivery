@@ -41,7 +41,7 @@ From within the repo, run...
 PYTHONPATH=./python python python/mb/amazonslots/main.py
 ```
 
-You should see Chrome launch and gradually proceed through all the screens to the delivery slot page. Keep an eye on the script's output in case it gets stuck. The slots page reloads automatically at regular intervals.
+You should see Chrome launch and gradually proceed through all the screens to the delivery slot page. Keep an eye on the script's output in case it gets stuck on its way to that page. From there, the page is reloaded automatically at regular intervals.
 
 If you don't have Twilio, the `say` command is the mechanism for notifying you. On a Mac, `say` is a text-to-speech command and it comes with the OS. On other operating systems you'll probably need to change this part of the script - or add a `say` command to your `PATH` that does what you want.
 
