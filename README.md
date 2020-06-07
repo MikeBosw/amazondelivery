@@ -31,7 +31,9 @@ Instructions
 
 *NOTE: auto sign-in doesn't work when your 2FA is enabled.*
 
-Create a file `python/username.secret` and `python/password.secret` to automate sign-in. If you have Twilio, create a file `python/twilio_sid.secret` and `python/twilio_token.secret`, then follow the instructions in `python/phone_numbers.json.example`.
+Create a file `python/username.secret` and `python/password.secret` to automate sign-in.
+
+If you have Twilio, create a file `python/twilio_sid.secret` and `python/twilio_token.secret`, then follow the instructions in `python/phone_numbers.json.example`.
 
 From within the repo, run...
 
