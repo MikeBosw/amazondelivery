@@ -1,19 +1,16 @@
-Credit for the idea goes to https://github.com/pcomputo/Whole-Foods-Delivery-Slot.
+Credit for the original idea goes to whoever made [this](https://github.com/pcomputo/Whole-Foods-Delivery-Slot).
 
 The idea is that instead of repeatedly refreshing the Amazon Fresh delivery page, you run this program in the background, leaving it open until it announces that a slot has opened up.
 
-If you give it Twilio account details you'll get an SMS text. Otherwise it uses the "say" command on your computer.
+If you give it Twilio account details you'll get an SMS text. Otherwise it uses the `say` command on your computer.
 
 Requirements
 ---
 
-Amazon Fresh.
-
-Chrome WebDriver.
-
-Python 3.8. With lower versions of Python ymmv.
-
-A command called `say` in your `PATH` variable that takes written English as input and communicates it to you. For example, on OS X, the `say` command is a built-in text-to-speech program that will literally say the words it's given out loud using your computer's audio.
+* Amazon Fresh.
+* Chrome WebDriver.
+* Python 3.8, but feel free to try a lower version and lmk how it goes.
+* either Twilio or a `say` command in your `PATH` environmennt variable
 
 Installation
 ---
@@ -32,18 +29,19 @@ Clone this repo. Then, from within the repo...
 Instructions
 ---
 
+*NOTE: auto sign-in doesn't work when your 2FA is enabled.*
+
+Create a file `python/username.secret` and `python/password.secret` to automate sign-in. If you have Twilio, create a file `python/twilio_sid.secret` and `python/twilio_token.secret`.
+
 From within the repo, run...
 
 ```
-cd python
-python mb/amazonslots/main.py
+PYTHONPATH=./python python python/mb/amazonslots/main.py
 ```
 
-Chrome should launch. You will have to log in manually - at least the first time. Once logged in, you should be navigated through a couple screens to the Amazon Fresh delivery window page.
+You should see Chrome launch and gradually proceed through all the screens to the delivery slot page. Keep an eye on the logs in case it gets stuck. The slots page reloads automatically at regular intervals.
 
-Leave Chrome running. The page reloads automatically at regular intervals.
-
-Note that the `say` command is the mechanism for notifying you. On a Mac, `say` is a text-to-speech command and it comes with the OS. On other operating systems you'll probably need to change this part of the script - or add a `say` command to your `PATH` that does what you want.
+If you don't have Twilio, the `say` command is the mechanism for notifying you. On a Mac, `say` is a text-to-speech command and it comes with the OS. On other operating systems you'll probably need to change this part of the script - or add a `say` command to your `PATH` that does what you want.
 
 Caveats
 ---
