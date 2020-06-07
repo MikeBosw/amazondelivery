@@ -7,9 +7,9 @@ If you give it Twilio account details you'll get an SMS text. Otherwise it uses 
 Requirements
 ---
 
-* Amazon Fresh.
-* Chrome WebDriver.
-* Python 3.8, but feel free to try a lower version and lmk how it goes.
+* Amazon Fresh or Whole Foods
+* Chrome WebDriver
+* Python 3.8, but feel free to try a lower version and lmk how it goes
 * either Twilio or a `say` command in your `PATH` environmennt variable
 
 Installation
