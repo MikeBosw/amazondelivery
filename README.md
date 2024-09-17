@@ -4,6 +4,10 @@ The idea is that instead of repeatedly refreshing the Amazon Fresh delivery page
 
 If you give it Twilio account details you'll get an SMS text. Otherwise it uses the `say` command on your computer.
 
+Disclaimer
+---
+This project was created during the early days of covid and hasn't been updated since. It undoubtedly has stopped working.
+
 Requirements
 ---
 
